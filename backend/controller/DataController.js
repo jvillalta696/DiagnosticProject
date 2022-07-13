@@ -2,9 +2,9 @@ let datahelper = require("../data/datahelper");
 const path = "../data";
 let object = { nombre: "Carlos", apellido: "Pepito" };
 
-const saveData = (fileName, data) => {
-  let filePath = `${path}/${fileName}.txt`;
-  let info = JSON.stringify(data);
+const saveData = (req, res) => {
+  let filePath = `${path}/${req.params.filename}.txt`;
+  let info = JSON.stringify(req.body);
   try {
     datahelper.writeData(filePath, info);
   } catch (ex) {
@@ -12,16 +12,19 @@ const saveData = (fileName, data) => {
   }
 };
 
-const loadData = (filename) => {
+const loadData = (req,res) => {
   try {
-    datahelper.readData(filename);
+  let filePath = `${path}/${req.params.filename}.txt`;
+   const data = datahelper.readData(filePath);
+   res.send(data)
   } catch (ex) {
     console.log(ex);
   }
 };
 
-const getData = async ()=>{
-    await datahelper.getListfiles(path)
+const getData = async (req,res)=>{
+    const data = await datahelper.getListfiles(path)
+    res.send(data)
 }
 module.exports = {
   saveData,

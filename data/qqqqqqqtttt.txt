@@ -1,0 +1,1 @@
+{"pais":"qqqqqqqtttt","jugadores":["fasdfasdf","fasdfasdf","fasdfasdf","fasdfasdf","fasdfasdf","fasdfasdf","fasdfasdf"]}
